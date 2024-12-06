@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
-        map<int,int> freq_map;
+        unordered_map<int,int> freq_map;
         vector<vector<int>> bucket(nums.size()+1);
         vector<int> return_val;
     
