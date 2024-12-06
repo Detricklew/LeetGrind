@@ -6,11 +6,7 @@ public:
         vector<int> return_val;
     
         for (int i = 0; i < nums.size(); i++){
-            if(freq_map.find(nums[i]) == freq_map.end()) {
-                freq_map[nums[i]] = 0;
-            }else{
                 freq_map[nums[i]]++;
-            }
         }
 
         for(auto& item: freq_map) {
