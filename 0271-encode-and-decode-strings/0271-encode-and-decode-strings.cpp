@@ -12,7 +12,6 @@ public:
             res += "{}";
             
         }
-        cout<< res.length() << endl;
         return res;
     }
 
@@ -27,8 +26,7 @@ public:
                 i++;
                 continue;
             }
-            int holda = s[i] + 'a';
-            cur += static_cast<char>(holda);
+            cur += s[i] + 'a';
         }
 
         return res;
