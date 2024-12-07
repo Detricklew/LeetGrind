@@ -27,7 +27,6 @@ public:
         while ( i < s.size()){
             if(s[i] == '#'){
                 i++;
-                cout << curcount << endl;
                 int count = stoi(curcount);
                 for (int j = 0;j < count; j++){
                     cur += s[i++];
