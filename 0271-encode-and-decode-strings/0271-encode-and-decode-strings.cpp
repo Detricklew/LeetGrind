@@ -3,30 +3,44 @@ public:
 
     // Encodes a list of strings to a single string.
     string encode(vector<string>& strs) {
+        if (strs.empty()) return "";
         string res = "";
 
         for (string str : strs){
+            res += to_string(str.size());
+            res += "#";
             for (char c : str){
-                res += c - 'a';
+                res += c;
             }
-            res += "{}";
-            
         }
         return res;
     }
 
     // Decodes a single string to a list of strings.
     vector<string> decode(string s) {
+        if (s.empty()) return {""};
+
         vector<string> res;
         string cur = "";
-        for (int i = 0; i < s.size(); i++){
-            if((i < s.size() - 1) && s[i] == '{' &&  s[i+1] == '}'){
+        int i = 0;
+        string curcount = "";
+        while ( i < s.size()){
+            if(s[i] == '#'){
+                i++;
+                cout << curcount << endl;
+                int count = stoi(curcount);
+                for (int j = 0;j < count; j++){
+                    cur += s[i++];
+                }
+                
                 res.push_back(cur);
                 cur = "";
-                i++;
-                continue;
+                curcount = "";
+            }else{
+                curcount += s[i++];
             }
-            cur += s[i] + 'a';
+
+            
         }
 
         return res;
