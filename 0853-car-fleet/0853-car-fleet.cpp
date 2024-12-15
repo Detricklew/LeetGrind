@@ -2,7 +2,7 @@ class Solution {
 public:
     int carFleet(int target, vector<int>& position, vector<int>& speed) {
         unordered_map<int,int> mappy_map;
-        vector<int> stacky_stack;
+        vector<float> stacky_stack;
 
         for(int i = 0; i < position.size(); i++){
             mappy_map[position[i]] = i;
@@ -12,7 +12,7 @@ public:
 
         for(int i = position.size()-1; i >= 0; i--){
             int val = position[i];
-            int time_to = std::ceil(((float)target - (float)val)/(float)speed[mappy_map[val]]);
+            float time_to = ((float)target - (float)val)/(float)speed[mappy_map[val]];
             cout<<time_to<<endl;
             if(!(stacky_stack.size())){
                 stacky_stack.push_back(time_to);
