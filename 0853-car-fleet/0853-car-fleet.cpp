@@ -13,7 +13,6 @@ public:
         for(int i = position.size()-1; i >= 0; i--){
             int val = position[i];
             float time_to = ((float)target - (float)val)/(float)speed[mappy_map[val]];
-            cout<<time_to<<endl;
             if(!(stacky_stack.size())){
                 stacky_stack.push_back(time_to);
                 continue;
