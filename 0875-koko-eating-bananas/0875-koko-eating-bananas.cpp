@@ -19,17 +19,11 @@ public:
             }
 
             if (kcan <= h){
-                cout<<"high hit"<<endl;
                 if (mid < k) k = mid;
                 hi = mid - 1;
             }else{
-                cout<<"low hit"<<endl;
                 l = mid + 1;
             }
-            cout << l<<endl;
-            cout<< hi <<endl;
-            cout<<kcan<<endl;
-            cout<<mid<<endl;
         }
 
         return k;
