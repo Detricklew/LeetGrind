@@ -1,45 +1,36 @@
 class Solution {
 public:
     int largestRectangleArea(vector<int>& heights) {
-        int maxArea = 0;
-        stack<pair<int, int>> stack; // pair: (index, height)
+        int maxu = 0;
+        stack<pair<int,int>> stacku;
 
-        // for (int i = 0; i < heights.size(); i++) {
-        //     int start = i;
-        //     while (!stack.empty() && stack.top().second > heights[i]) {
-        //         pair<int, int> top = stack.top();
-        //         int index = top.first;
-        //         int height = top.second;
-        //         maxArea = max(maxArea, height * (i - index));
-        //         start = index;
-        //         stack.pop();
-        //     }
-        //     stack.push({ start, heights[i] });
-        // }
 
-         for (int i = 0; i < heights.size(); i++){
+        for (int i = 0; i < heights.size(); i++){
             
             int index = i;
             
-            while(!stack.empty() && stack.top().second > heights[i]){
-                pair<int,int> top = stack.top();
+            while(!stacku.empty() && stacku.top().second > heights[i]){
+                pair<int,int> top = stacku.top();
                 int start = top.first;
                 int height = top.second;
-                maxArea = max(maxArea, height * (i - start));
+                maxu = max(maxu, height * (i - start));
                 index = start;
-                stack.pop();
+                stacku.pop();
             }
-            stack.push({index, heights[i]});
+            stacku.push({index, heights[i]});
 
         }
 
+        while(!stacku.empty()){
+            int size = static_cast<int>(heights.size());
+            int index = stacku.top().first;
+            int height = stacku.top().second;
 
-        while (!stack.empty()) {
-            int index = stack.top().first;
-            int height = stack.top().second;
-            maxArea = max(maxArea, height * (static_cast<int>(heights.size()) - index));
-            stack.pop();
+            maxu = max(maxu, height * (size - index));
+
+            stacku.pop();
         }
-        return maxArea;
+
+        return maxu;
     }
 };
