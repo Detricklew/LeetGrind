@@ -4,18 +4,35 @@ public:
         int maxArea = 0;
         stack<pair<int, int>> stack; // pair: (index, height)
 
-        for (int i = 0; i < heights.size(); i++) {
-            int start = i;
-            while (!stack.empty() && stack.top().second > heights[i]) {
-                pair<int, int> top = stack.top();
-                int index = top.first;
+        // for (int i = 0; i < heights.size(); i++) {
+        //     int start = i;
+        //     while (!stack.empty() && stack.top().second > heights[i]) {
+        //         pair<int, int> top = stack.top();
+        //         int index = top.first;
+        //         int height = top.second;
+        //         maxArea = max(maxArea, height * (i - index));
+        //         start = index;
+        //         stack.pop();
+        //     }
+        //     stack.push({ start, heights[i] });
+        // }
+
+         for (int i = 0; i < heights.size(); i++){
+            
+            int index = i;
+            
+            while(!stack.empty() && stack.top().second > heights[i]){
+                pair<int,int> top = stack.top();
+                int start = top.first;
                 int height = top.second;
-                maxArea = max(maxArea, height * (i - index));
-                start = index;
+                maxArea = max(maxArea, height * (i - start));
+                index = start;
                 stack.pop();
             }
-            stack.push({ start, heights[i] });
+            stack.push({index, heights[i]});
+
         }
+
 
         while (!stack.empty()) {
             int index = stack.top().first;
