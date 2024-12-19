@@ -19,7 +19,7 @@ public:
             }
 
             if (kcan <= h){
-                if (mid < k) k = mid;
+                k = mid;
                 hi = mid - 1;
             }else{
                 l = mid + 1;
