@@ -15,7 +15,7 @@ public:
 
             int kcan = 0;
             for (int num: piles){
-                kcan += ceil((double)num/(double)mid);
+                kcan += ceil((double)num/mid);
             }
 
             if (kcan <= h){
