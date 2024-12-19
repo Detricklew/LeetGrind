@@ -1,22 +1,13 @@
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
-        int pivot = 0;
-        int l = 0; int h = nums.size()-1;
-        int mid = (l+h)/2;
-        if (nums[mid] == target){
-            return mid;
-        }
-        if (nums[mid] > nums[nums.size()-1]){
-            l = mid + 1;
-        }else{
-           h =  mid - 1;
-        }
+        int l = 0; int h = nums.size() - 1;
 
-        pivot = mid;
+        int pivot =  h;
 
-        while(l <= h){
-            mid = (l+h)/2;
+        while (l<=h){
+            int mid = (l + h)/2;
+
             if (nums[mid] == target){
                 return mid;
             }
@@ -26,28 +17,29 @@ public:
             }else{
                 h = mid - 1;
             }
-
             if (nums[mid] < nums[pivot]) pivot = mid;
-            
         }
 
-        l = pivot; h = (l+nums.size()-1) % nums.size();
+        l = 0; h = nums.size() - 1;
+
+        if (target > nums[pivot] && target <= nums[h]){
+            l = pivot + 1;
+        }
+        else{
+            h = pivot - 1;
+        }
 
         while (l <= h){
-            mid = (((l + h)/2) + pivot) % nums.size();
-            cout<<l<<endl;
-            cout<<h<<endl;
-            cout<<mid<<endl;
+            int mid = (l + h)/2;
+
             if (nums[mid] == target){
                 return mid;
             }
 
             if (nums[mid] > target){
-                cout<<"high hit"<< endl;
-                h = mid - 1;
+                h = mid - 1; 
             }else{
-                cout<<"low hit"<< endl;
-                l = mid + 1;
+                l = mid - 1;
             }
         }
 
