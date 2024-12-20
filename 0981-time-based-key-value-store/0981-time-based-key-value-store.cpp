@@ -19,23 +19,25 @@ public:
       
         int res = -1;
 
-        int l = 0; int h = timemappy[key].size() - 1;
+        auto &array = timemappy[key];
+
+        int l = 0; int h = array.size() - 1;
 
         while (l<=h){
             int mid = (l+h)/2;
 
-            if (timemappy[key][mid].first == timestamp){
-                return timemappy[key][mid].second;
+            if (array[mid].first == timestamp){
+                return array[mid].second;
             }
 
-            if (timemappy[key][mid].first > timestamp){
+            if (array[mid].first > timestamp){
                 h = mid - 1;
             }else{
                 res = mid;
                 l = mid + 1;
             }
         }
-        return res != -1 ? timemappy[key][res].second : "";
+        return res != -1 ? array[res].second : "";
     }
 };
 
