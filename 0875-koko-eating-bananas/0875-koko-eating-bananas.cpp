@@ -11,7 +11,7 @@ public:
         int hi = max; long int l = ceil(sum/h);
         int k = max;
         while (l<=hi && (l+hi)/2 != 0){
-            int mid = l + (hi - l)/2;
+            int mid = (l+hi)/2;
 
             int kcan = 0;
             for (int num: piles){
