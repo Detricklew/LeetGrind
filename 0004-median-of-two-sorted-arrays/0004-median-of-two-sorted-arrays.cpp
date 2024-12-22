@@ -29,9 +29,6 @@ public:
 
             if (mid >= 0 && mid < a){
                 r1 = nums1[mid];
-                cout<<"r1"<<endl;
-                cout<<mid<<endl;
-                
             }
             
             if (mid < a) r1 = nums1[mid];
