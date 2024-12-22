@@ -1,9 +1,9 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        if (s.size() == 0 || s.size() == 1){
-            return s.size();
-        }
+        // if (s.size() == 0 || s.size() == 1){
+        //     return s.size();
+        // }
 
         unordered_set<char> setBoi;
         int l = 0; int h = 0;
@@ -20,13 +20,8 @@ public:
 
                 }
             }
-
-            cout<<"insert"<<endl;
-            cout<<s[h]<<endl;
             setBoi.insert(s[h++]);
             res = max(res, ++count);
-            cout<<count<<endl;
-            
         }
 
         return res;
