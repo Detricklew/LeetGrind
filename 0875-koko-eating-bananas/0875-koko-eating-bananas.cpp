@@ -16,10 +16,9 @@ public:
             int mid = (l+hi)/2;
             long long time = 0;
             for(int num : piles){
-                time += ceil(static_cast<double>(num)/mid);
+                time += ceil((double)num/mid);
             }
 
-            cout << time<<endl;
             if(time > h){
                 l = mid + 1;
             }else{
