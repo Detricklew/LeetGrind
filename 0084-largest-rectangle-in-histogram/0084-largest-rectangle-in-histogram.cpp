@@ -1,36 +1,31 @@
 class Solution {
 public:
     int largestRectangleArea(vector<int>& heights) {
-        int maxu = 0;
-        stack<pair<int,int>> stacku;
+                int maxi = 0;
 
+        vector<pair<int,int>> mono;
 
         for (int i = 0; i < heights.size(); i++){
-            
-            int index = i;
-            
-            while(!stacku.empty() && stacku.top().second > heights[i]){
-                pair<int,int> top = stacku.top();
-                int start = top.first;
-                int height = top.second;
-                maxu = max(maxu, height * (i - start));
-                index = start;
-                stacku.pop();
+            int index = i + 1;
+            while(!mono.empty() && heights[i] < mono.back().first){
+                int ele = mono.back().first;
+                index = mono.back().second;
+                maxi = max(maxi, ele * ((i+1) - index ));
+                mono.pop_back();
             }
-            stacku.push({index, heights[i]});
 
+            mono.push_back({heights[i],index});
         }
 
-        while(!stacku.empty()){
-            int size = static_cast<int>(heights.size());
-            int index = stacku.top().first;
-            int height = stacku.top().second;
 
-            maxu = max(maxu, height * (size - index));
-
-            stacku.pop();
+        while(!mono.empty()){
+            int ele = mono.back().first;
+            int index = mono.back().second;
+            int size = (int)heights.size();
+            maxi = max(maxi, ele * (size - index + 1));
+            mono.pop_back();
         }
 
-        return maxu;
+        return maxi;
     }
 };
