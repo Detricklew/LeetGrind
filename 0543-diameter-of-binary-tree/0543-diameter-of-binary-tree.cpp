@@ -24,7 +24,6 @@ public:
         int right = helper(root->right);
 
         maxi = max(maxi, left+right);
-        cout<<maxi<<endl;
         return 1 + max(left,right);
     }
 };
