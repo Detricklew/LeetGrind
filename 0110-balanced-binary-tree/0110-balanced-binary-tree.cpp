@@ -29,6 +29,6 @@ public:
         int maxi = max(left.second, right.second);
         int lessi = min(left.second, right.second);
         
-        return { (maxi - 1) == lessi, max(left.second, right.second)};
+        return { (maxi - 1) == lessi, maxi};
     }
 };
