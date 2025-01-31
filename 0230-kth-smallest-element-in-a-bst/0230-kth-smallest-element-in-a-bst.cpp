@@ -31,8 +31,6 @@ public:
 
         pair<int,int> check2 = helper(root->right, k, pos);
 
-        if(check2.second != -1) return check2;
-
         return {check2.first, max(check.second,check2.second)};
     }
 };
