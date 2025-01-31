@@ -27,6 +27,8 @@ public:
 
         if(pos == k) return {pos, root->val};
 
+        if(check.second != -1) return check;
+
         pair<int,int> check2 = helper(root->right, k, pos);
 
         return {check2.first, max(check.second,check2.second)};
